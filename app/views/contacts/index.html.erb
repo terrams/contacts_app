@@ -1,0 +1,27 @@
+<h1>Contacts</h1>
+
+ <% @contacts.each do |contact| %>
+  <div>
+    <h4>The first name is: <%= contact.first_name %></h4>
+    <h4>The last name is: <%= contact.last_name %></h4>
+    <h4>The email address is: <%= contact.email %></h4>
+    <h4>The phone number is: <%= contact.phone_number %></h4>
+  </div>
+<% end %>
+
+
+<h1>Contacts Named Joe</h1>
+
+ <% @contacts.find_by_first_name("Joe") do |contact| %>
+  <div>
+    <h4>The first name is: <%= contact.first_name %></h4>
+    <h4>The last name is: <%= contact.last_name %></h4>
+    <h4>The email address is: <%= contact.email %></h4>
+    <h4>The phone number is: <%= contact.phone_number %></h4>
+  </div>
+
+<% end %>
+
+<div>
+  <a href="/contacts/new">Enter a New Product</a>
+</div>

@@ -1,0 +1,19 @@
+
+<h1>Contact Information for <%=@contact.full_name %></h1>
+Contact created at <%= @contact.friendly_created_at %>
+<div>
+  <h4>The first name is: <%= @contact.first_name %></h4>
+  <h4>The last name is: <%= @contact.last_name %></h4>
+  <h4>The email address is: <%= @contact.email %></h4>
+  <h4>The phone number is: <%= @contact.country_qualified_phone_num %></h4>
+</div>
+
+<div>
+  <a href="/contacts">Back to the main page</a>
+</div>
+<div>
+  <a href="/contacts/<%=@contact.id%>/edit">Update Product</a>
+</div>
+<div>
+  <%= link_to "Destroy this Contact", "/contacts/#{@contact.id}", method: :delete %>
+</div>
