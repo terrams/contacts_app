@@ -1,27 +1,16 @@
-<h1>Contacts</h1>
+<h1 style="margin-bottom:40px">Contacts</h1>
 
- <% @contacts.each do |contact| %>
-  <div>
-    <h4>The first name is: <%= contact.first_name %></h4>
-    <h4>The last name is: <%= contact.last_name %></h4>
-    <h4>The email address is: <%= contact.email %></h4>
-    <h4>The phone number is: <%= contact.phone_number %></h4>
-  </div>
-<% end %>
-
-
-<h1>Contacts Named Joe</h1>
-
- <% @contacts.find_by_first_name("Joe") do |contact| %>
-  <div>
-    <h4>The first name is: <%= contact.first_name %></h4>
-    <h4>The last name is: <%= contact.last_name %></h4>
-    <h4>The email address is: <%= contact.email %></h4>
-    <h4>The phone number is: <%= contact.phone_number %></h4>
-  </div>
-
+<% if current_user %>
+  <% @contacts.each do |contact| %>
+    <% if contact.user_id == current_user.id %>
+      <div style="margin-bottom:40px">
+        <h4><a href='/contacts/<%= contact.id %>'><%= contact.first_name %> <%= contact.middle_name %> <%= contact.last_name %></a></h4>
+        <p><em>Contact created at <%= contact.friendly_created_at %></em></p>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
 
 <div>
-  <a href="/contacts/new">Enter a New Product</a>
+  <a href="/contacts/new">Enter a New Contact</a>
 </div>

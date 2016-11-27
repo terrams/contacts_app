@@ -1,7 +1,8 @@
 class Contact < ApplicationRecord
+  belongs_to :user
 
-  def self.find_by_first_name(name)
-   self.select{ |firstname| firstname == name}
+  def self.all_joes
+    Contact.where(first_name: "Joe")
   end
 
   def friendly_created_at
@@ -9,7 +10,7 @@ class Contact < ApplicationRecord
   end
 
   def full_name
-    result = first_name + " " + last_name
+    first_name + " " + last_name
   end
 
   def country_qualified_phone_num
